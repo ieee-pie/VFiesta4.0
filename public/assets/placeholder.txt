@@ -1,0 +1,7 @@
+Put your images here:
+- Main.jpg
+- speaker1.jpg
+- speaker2.jpg
+- main-poster.jpg
+- contact1.jpg
+- contact2.jpg
