@@ -51,7 +51,7 @@ export default function Header() {
               <li><a href="#contact" onClick={() => setOpen(false)} className="block py-1">CONTACT</a></li>
             </ul>
             <div className="mt-4">
-              <a href="#tickets" onClick={() => setOpen(false)} className="inline-block bg-red-700 text-white px-4 py-2 rounded font-aderos">REGISTER</a>
+              <a href="#tickets"  className="inline-block bg-red-700 text-white px-4 py-2 rounded font-aderos">REGISTER</a>
             </div>
           </div>
         </div>

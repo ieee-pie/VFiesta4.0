@@ -179,7 +179,7 @@ export default function Gallery() {
           </p>
           
           <motion.a
-            href="#tickets"
+            href="https://forms.gle/XKA4gsYefJPyRAYB6"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
             className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 text-white text-lg font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 font-aderos tracking-wide group"

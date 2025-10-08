@@ -23,19 +23,26 @@ const TicketCard = memo(function TicketCard({ ticket, index }) {
           <div className="text-center mb-8">
             <div className="text-4xl font-extrabold mb-2 text-secondary-800">{ticket.price}</div>
             {ticket.originalPrice && (
-              <div className="text-lg text-secondary-400 line-through">{ticket.originalPrice}</div>
+              <div className="text-lg text-secondary-600 line-through decoration-red-600">{ticket.originalPrice}</div>
             )}
           </div>
 
           <motion.a
-            href="#register"
+            href={ticket.link || '#'}
+            target={ticket.link ? '_blank' : undefined}
+            rel={ticket.link ? 'noopener noreferrer' : undefined}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="block w-full py-4 px-6 text-center text-sm font-bold rounded-xl shadow-lg transition-all duration-300 font-aderos tracking-wide relative overflow-hidden group bg-primary-600 text-white hover:shadow-xl reg-btn"
-            onClick={e => {
-              e.preventDefault();
-              const evt = new CustomEvent('reg-btn-click', { bubbles: true });
-              e.target.dispatchEvent(evt);
+            onClick={(e) => {
+              // If this is the SB PRC IEEE Members ticket (no external link), open the global alert
+              const isSBPRC = ticket.heading && ticket.heading.toLowerCase().includes('sb prc ieee members');
+              if (isSBPRC) {
+                e.preventDefault();
+                // Dispatch a simple CustomEvent that VFiestaLanding listens for
+                const evt = new CustomEvent('reg-btn-click', { bubbles: true });
+                document.dispatchEvent(evt);
+              }
             }}
           >
             <span className="relative z-10">{ticket.price === 'Special Price' ? 'CONTACT FOR PRICING' : 'SECURE YOUR SPOT'}</span>
@@ -49,9 +56,12 @@ const TicketCard = memo(function TicketCard({ ticket, index }) {
 
 export default function Tickets() {
   const ticketCategories = [
-    { heading: 'Non-IEEE Members', price: '₹1,299', originalPrice: '₹1,599' },
-    { heading: 'IEEE Members', price: '₹999', originalPrice: '₹1,299' },
-    { heading: 'IEEE SB PRC', price: '₹899', originalPrice: '₹1,199' }
+    { heading: 'Professional Non-IEEE Members', price: '₹2,499', originalPrice: '₹2,999', link: 'https://forms.gle/XKA4gsYefJPyRAYB6' },
+    { heading: 'Professional IEEE Members', price: '₹1,999', originalPrice: '₹2,199', link: 'https://forms.gle/XKA4gsYefJPyRAYB6' },
+    { heading: `Student Non-IEEE Members`, price: '₹1,299', originalPrice: '₹1,599', link: 'https://forms.gle/XKA4gsYefJPyRAYB6' },
+    { heading: 'Student IEEE Members', price: '₹1,049', originalPrice: '₹1,299', link: 'https://forms.gle/XKA4gsYefJPyRAYB6' },
+    // { heading: 'SB PRC IEEE Members ', price: '₹999', originalPrice: '₹1,099', link: 'https://forms.gle/XKA4gsYefJPyRAYB6' },
+    { heading: 'SB PRC IEEE Members ', price: 'Not Available Now', originalPrice: '₹1,099', link: '' }
   ]
 
   const containerVariants = {
@@ -67,7 +77,7 @@ export default function Tickets() {
   return (
     <motion.section
       id="tickets"
-      className="relative py-20 px-6 max-w-7xl mx-auto"
+      className="relative py-10 px-6 max-w-7xl mx-auto"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
@@ -92,9 +102,11 @@ export default function Tickets() {
           </p> */}
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="flex flex-wrap justify-center gap-8 mb-16">
           {ticketCategories.map((ticket, index) => (
-            <TicketCard key={index} ticket={ticket} index={index} />
+            <div key={index} className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.33rem)]">
+              <TicketCard ticket={ticket} index={index} />
+            </div>
           ))}
         </div>
       </div>

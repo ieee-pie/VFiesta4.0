@@ -63,7 +63,7 @@ const EventsGrid = ({ events }) => {
                   <div className="flex items-center justify-between">
                     <a href={event.link} target="_blank" rel="noopener noreferrer">
                       <div className="bg-primary-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                        Register Now
+                        {event.status}
                       </div>
                     </a>
                     <motion.div

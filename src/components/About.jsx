@@ -93,7 +93,7 @@ export default function About() {
             V-Fiesta 4.0 represents the pinnacle of{' '}
             <span className="font-bold text-primary-600">IEEE PIE Kerala Section's</span>{' '}
             commitment to fostering innovation and entrepreneurial excellence. This flagship experience unites{' '}
-            visionar leaders
+            visionary leaders
             emerging entrepreneurs, and industry pioneers in an unprecedented celebration of transformative thinking.
           </p>
         </motion.div>
