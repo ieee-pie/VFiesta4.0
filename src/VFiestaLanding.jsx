@@ -13,6 +13,9 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import GridBackground from "./components/GridBackground";
 import Countdown from "./components/Countdown";
+import WorkshopGrid from "./components/WorkshopGrid";
+import { title } from "framer-motion/client";
+import TalksGrid from "./components/TalksGrid";
 
 export default function VFiestaLanding() {
   const [alertOpen, setAlertOpen] = useState(false);
@@ -75,6 +78,26 @@ export default function VFiestaLanding() {
       { id: 5, title: "Stumble Fest — Pre Event #5", date: "Oct 9th to 10th",status:"Registration Closed", },
     ],
     []
+  );
+
+  const worksop = useMemo(
+    () => [
+      { id: 1, title: "Inside Marketing - Workshop Series #1 ",description:"𝘉𝘦𝘨𝘪𝘯𝘯𝘦𝘳'𝘴 𝘎𝘶𝘪𝘥𝘦 𝘵𝘰 𝘉𝘳𝘢𝘯𝘥𝘪𝘯𝘨 & 𝘚𝘵𝘳𝘢𝘵𝘦𝘨𝘺 "  },
+      { id: 2, title: "Shoot & Edit — Workshopa Series #2" , description:"𝘔𝘢𝘴𝘵𝘦𝘳 𝘵𝘩𝘦 𝘓𝘪𝘨𝘩𝘵, 𝘊𝘰𝘯𝘵𝘳𝘰𝘭 𝘵𝘩𝘦 𝘓𝘦𝘯𝘴, 𝘋𝘦𝘧𝘪𝘯𝘦 𝘠𝘰𝘶𝘳 𝘝𝘪𝘴𝘪𝘰𝘯"},
+      { id: 3, title: "Shoot & Edit — Workshopa Series #2", description:"𝘔𝘢𝘴𝘵𝘦𝘳 𝘵𝘩𝘦 𝘓𝘪𝘨𝘩𝘵, 𝘊𝘰𝘯𝘵𝘳𝘰𝘭 𝘵𝘩𝘦 𝘓𝘦𝘯𝘴, 𝘋𝘦𝘧𝘪𝘯𝘦 𝘠𝘰𝘶𝘳 𝘝𝘪𝘴𝘪𝘰𝘯" },
+      { id: 4, title: "Stock Market 101 — Workshop Series #3", description:"𝘛𝘶𝘳𝘯𝘪𝘯𝘨 𝘤𝘶𝘳𝘪𝘰𝘴𝘪𝘵𝘺 𝘪𝘯𝘵𝘰 𝘤𝘰𝘯𝘧𝘪𝘥𝘦𝘯𝘤𝘦 𝘪𝘯 𝘵𝘩𝘦 𝘴𝘵𝘰𝘤𝘬 𝘮𝘢𝘳𝘬𝘦𝘵" },
+      { id: 5, title: "Pitch Craft — Pre Event #4",description:"𝘛𝘩𝘦 𝘌𝘥𝘨𝘦 𝘠𝘰𝘶 𝘕𝘦𝘦𝘥 𝘉𝘦𝘧𝘰𝘳𝘦 𝘠𝘰𝘶 𝘚𝘱𝘦𝘢𝘬" },
+      ,
+    ],
+    []
+  );
+
+  const talks = useMemo(
+    () => [
+      {id:1, title:"The Engineer's Wallet - Talk Series #1",description:"Take charge of your finances and build a secure future. 𝐈𝐄𝐄𝐄 𝐏𝐈𝐄 𝐊𝐞𝐫𝐚𝐥𝐚 𝐒𝐞𝐜𝐭𝐢𝐨𝐧, in collaboration with 𝐈𝐄𝐄𝐄 𝐒𝐁 𝐏𝐑𝐂, proudly presents another exciting talk session as part of 𝐕-𝐅𝐢𝐞𝐬𝐭𝐚 𝟒.𝟎"}, 
+      {id:2, title:"The Fun Frequency - Talk Series #2",description:"Join the ever-energetic 𝗥𝗝 𝗔𝗿𝘂𝗻 𝗦𝗮𝗻𝗸𝗮𝗿, the voice that keeps the airwaves buzzing at Red FM, as he lights up the stage with humor, spontaneity, and endless fun vibes. Expect laughter, engaging conversations. "}
+
+    ],
   );
   // const eventLink = useMemo(
   //   () =>[
@@ -303,6 +326,8 @@ export default function VFiestaLanding() {
           <AboutPie />
           <AboutHost />
           <EventsGrid events={events} />
+          <WorkshopGrid events={worksop}/>
+          <TalksGrid events={talks} />
           <Gallery />
           <Tickets />
           <Contact />
